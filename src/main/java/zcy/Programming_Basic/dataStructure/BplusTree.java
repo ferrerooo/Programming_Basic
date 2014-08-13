@@ -1,4 +1,4 @@
-package zcy.Programming_Basic.advanced;
+package zcy.Programming_Basic.dataStructure;
 
 import java.util.*;
 import java.util.AbstractMap.SimpleEntry;
