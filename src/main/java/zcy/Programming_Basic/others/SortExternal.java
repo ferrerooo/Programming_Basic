@@ -1,6 +1,13 @@
 package zcy.Programming_Basic.others;
 import java.util.*;
 import java.io.*;
+
+/*
+ * file.exists();   file.delete();  file.getPath();   file.renameTo(file);   file.list();
+ * 
+ * 
+ * */
+
 public class SortExternal {
 
 	public static void main(String[] args) throws Exception {
