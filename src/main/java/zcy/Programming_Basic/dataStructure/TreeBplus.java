@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.Map.Entry;
 
-public class BplusTree implements B {
+public class TreeBplus implements B {
 	/** 根节点 */
 	protected Node root;
 	/** 阶数，M值 */
@@ -39,7 +39,7 @@ public class BplusTree implements B {
 	public void insertOrUpdate(Comparable key, Object obj) {
 		root.insertOrUpdate(key, obj, this);
 	}
-	public BplusTree(int order) {
+	public TreeBplus(int order) {
 		if (order < 3) {
 			System.out.print("order must be greater than 2");
 			System.exit(0);
@@ -51,7 +51,7 @@ public class BplusTree implements B {
 
 	// 测试
 	public static void main(String[] args) {
-		BplusTree tree = new BplusTree(6);
+		TreeBplus tree = new TreeBplus(6);
 		Random random = new Random();
 		long current = System.currentTimeMillis();
 		for (int j = 0; j < 100000; j++) {
@@ -137,7 +137,7 @@ class Node {
 		return null;
 	}
 
-	public void insertOrUpdate(Comparable key, Object obj, BplusTree tree) {
+	public void insertOrUpdate(Comparable key, Object obj, TreeBplus tree) {
 		// 如果是叶子节点
 		if (isLeaf) {
 			// 不需要分裂，直接插入或更新
@@ -239,7 +239,7 @@ class Node {
 	}
 
 	/** 插入节点后中间节点的更新 */
-	protected void updateInsert(BplusTree tree) {
+	protected void updateInsert(TreeBplus tree) {
 
 		validate(this, tree);
 
@@ -302,7 +302,7 @@ class Node {
 	}
 
 	/** 调整节点关键字 */
-	protected static void validate(Node node, BplusTree tree) {
+	protected static void validate(Node node, TreeBplus tree) {
 
 		// 如果关键字个数与子节点个数相同
 		if (node.getEntries().size() == node.getChildren().size()) {
@@ -335,7 +335,7 @@ class Node {
 	}
 
 	/** 删除节点后中间节点的更新 */
-	protected void updateRemove(BplusTree tree) {
+	protected void updateRemove(TreeBplus tree) {
 
 		validate(this, tree);
 
@@ -436,7 +436,7 @@ class Node {
 		}
 	}
 
-	public void remove(Comparable key, BplusTree tree) {
+	public void remove(Comparable key, TreeBplus tree) {
 		// 如果是叶子节点
 		if (isLeaf) {
 
