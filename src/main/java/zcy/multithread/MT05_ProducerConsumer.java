@@ -3,7 +3,7 @@ package zcy.multithread;
 public class MT05_ProducerConsumer {
 
 	public static void main(String[] args) {
-		Godown godown = new Godown(30);
+		Godown godown = new Godown(300);
 		Consumer c1 = new Consumer(50, godown);
 		Consumer c2 = new Consumer(20, godown);
 		Consumer c3 = new Consumer(130, godown);
@@ -29,7 +29,7 @@ public class MT05_ProducerConsumer {
 }
 
 class Godown {
-	public static final int max_size = 100;// 最大库存量
+	public static final int max_size = 1000;// 最大库存量
 	public int curnum;// 当前库存量
 
 	Godown() {
@@ -94,7 +94,7 @@ class Producer extends Thread {
 
 // 消费者
 class Consumer extends Thread {
-	private int neednum; // 生产产品的数量
+	private int neednum; // 消费产品的数量
 	private Godown godown; // 仓库
 
 	Consumer(int neednum, Godown godown) {
