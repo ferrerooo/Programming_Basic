@@ -3,7 +3,7 @@ package zcy.multithread;
 import java.util.concurrent.Executors; 
 import java.util.concurrent.ExecutorService;
 
-public class MT06_ThreadPool01 {
+public class MT06_01FixedPool {
 
 	public static void main(String[] args) {
 
