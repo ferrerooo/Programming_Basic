@@ -5,6 +5,16 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.locks.Lock; 
 import java.util.concurrent.locks.ReentrantLock;
 
+/*
+ *  新功能里的锁 和 原来的synchronized的锁 是两个概念了。
+ *  新功能 是 专门弄了一个锁对象，表示一个锁； 而不是说要锁住某个业务对象的概念
+ *  
+ *  老的同步锁是放在  共享对象的方法上； 新的锁是放在 线程的run方法里,当然也可以放在共享的对象上
+ *  
+ *  新的锁本身就是一个 被 多个线程  共享的对象
+ * 
+ */
+
 public class MT08_01NewLock {
 
 	public static void main(String[] args) { 
@@ -48,12 +58,15 @@ class User implements Runnable {
 	public void run() { 
 		//获取锁
 		myLock.lock(); 
+		try{
 		//执行现金业务
 		System.out.println(name + "正在操作" + myCount + "账户，金额为" + iocash + "，当前金额为" + myCount.getCash()); 
 		myCount.setCash(myCount.getCash() + iocash); 
 		System.out.println(name + "操作" + myCount + "账户成功，金额为" + iocash + "，当前金额为" + myCount.getCash()); 
-		//释放锁，否则别的线程没有机会执行了
-		myLock.unlock(); 
+		} finally {
+			//释放锁，否则别的线程没有机会执行了
+			myLock.unlock();
+		}
 	} 
 	
 }
