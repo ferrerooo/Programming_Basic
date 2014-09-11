@@ -45,7 +45,7 @@ class Godown {
 			System.out.println("要生产的产品数量" + neednum + "超过剩余库存量" + (max_size - curnum) + "，暂时不能执行生产任务!");
 			try {
 				// 当前的生产线程等待。 注意这个wait是让谁等待！！ 在哪个线程里运行wait(),哪个线程就等待
-				this.wait();
+				this.wait(); // 哪个对象 调用wait(), 就放弃哪个对象的锁
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
