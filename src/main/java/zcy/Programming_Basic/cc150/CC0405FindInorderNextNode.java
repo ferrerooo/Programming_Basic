@@ -1,6 +1,6 @@
 package zcy.Programming_Basic.cc150;
 
-public class CC0406FindInorderNextNode {
+public class CC0405FindInorderNextNode {
 	
 	public TreeNode findInorderNext(TreeNode node) {
 		
