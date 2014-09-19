@@ -7,7 +7,7 @@ import java.util.concurrent.Semaphore;
 public class MT12_01Semaphore {
 
 	public static void main(String[] args) {
-		MyPool myPool = new MyPool(20);
+		MyPool myPool = new MyPool(13);
 		// 创建线程池
 		ExecutorService threadPool = Executors.newFixedThreadPool(2);
 		MyThread t1 = new MyThread("任务A", myPool, 3);
